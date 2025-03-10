@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry} % Set margin size to 1 inch
+\usepackage{minted}
+
+\title{z-score-normalization using SIMD}
+\author{kevin Lopez Chavez}
+\date{October 2024}
+
+\newcommand{\zonenorm}{\textit{$Z$-score normalization}}
+
+\begin{document}
+
+\maketitle
+
+% \textbf{Required sections: }
+\section{Report deliverables}
+\begin{itemize}
+    \item The file is named \texttt{report.pdf}.
+    \item Links to exact locations where the original program is referenced in \hyperref[sec:links]{Section \ref*{sec:links}}.
+    \item An explanation of the code, the program's functionality, flow, and SIMD acceleration in \hyperref[sec:code]{Section \ref*{sec:code}}.
+    \item Compilation steps and flags in \hyperref[sec:compilation]{Section \ref*{sec:compilation}}.
+    \item Proof of achieved speedup with expectations in \hyperref[sec:speedup]{Section \ref*{sec:speedup}}.
+\end{itemize}
+
+% (  5pt) Name the file  "report.pdf" 
+% (10pt) Include the link to exact location where the original program is referenced from
+% (15pt) Explain your code, functionality of the program, program flow, and how you have used SIMD to accelerate
+% (10pt) Compilation steps and flags
+% (10pt) Proof of Achieved Speedup ( and if it matches with your exceptions)
+
+
+\section{Introduction}
+The \zonenorm{} is a normalization method used in machine learning to improve the training of models.
+While the \zonenorm{} improves the run time of machine learning models, it is costly to compute.
+First, one needs to get the mean, then the standard deviation, and then update every input from the matrix.
+
+In this homework, I have made a program that uses SIMD instructions to accelerate the calculation of \zonenorm{} by 5.1x without any drawbacks; the only necessary thing is to execute an x86 processor that supports AVX2 instructions.
+
+% \subsection{ Formula }
+
+% \begin{itemize}
+%     \item $\vec{X}$ is the original input.
+%     \item $\mu$ is the mean of $\vec{X}$.
+%     \item $\sigma$ is the standard deviation of $\vec{X}$.
+% \end{itemize}
+
+% (10pt) Include the link to exact location where the original program is referenced from
+\section{Links to Exact Locations} \label{sec:links}
+I was not able to find exact code for Z normalization, but refer to the following articles to understand the implementation.
+
+\textbf{Explanation and example usage of data normalization}:
+\begin{itemize} \item \url{https://www.turing.com/kb/data-normalization-with-python-scikit-learn-tips-tricks-for-data-science} \end{itemize}
+
+\textbf{The code implementation of the Z-score normalization (Scikit-learn repository):}
+\begin{itemize}  \item \url{https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/preprocessing/_data.py} \end{itemize}
+
+% (15pt) Explain your code, functionality of the program, program flow, and how you have used SIMD to accelerate
+\section{Code Explanation} \label{sec:code}
+\input{code_explanation}
+
+
+
+
+
+
+
+
+
+
+
+
+% (10pt) Compilation steps and flags
+\section{Compilation Steps and Flags} \label{sec:compilation}
+I used the following commands to compile the code and run it.
+\begin{itemize}
+    \item \textbf{Original version:}
+          \begin{itemize}
+              \item \begin{verbatim} $ g++ ./z_score_norm__Original__.cpp -o z_norm_og.exe && ./z_norm_og.exe \end{verbatim}
+          \end{itemize}
+    \item \textbf{AVX-optimized version:}
+          \begin{itemize}
+              \item \begin{verbatim} $ g++ -mavx2 ./z_score_norm__Optimized__.cpp -o z_opt.exe && ./z_opt.exe \end{verbatim}
+          \end{itemize}
+
+\end{itemize}
+Where the flags mean the following:
+\begin{itemize}
+    \item \texttt{g++}: Compiler used to compile the C++ code.
+    \item \texttt{-mavx2}: This flag enables AVX2 instructions.
+    \item \texttt{./z\_score\_norm\_\_Original\_\_.cpp}: The source file.
+    \item \texttt{-o z\_norm\_og.exe}: The \texttt{-o}: name of the output executable file.
+    \item \texttt{\&\& ./z\_norm\_og.exe}: Execute the program after compiling.
+\end{itemize}
+
+The mean should be 0, and the standard deviation should be 1 when a matrix has been normalized.
+I performed this operation to validate that the normalization had been done correctly.
+This is shown in the output log files \ref{sec: original logs}, \ref{sec: SIMD logs}
+
+% (10pt) Proof of Achieved Speedup ( and if it matches with your exceptions)
+\section{Proof of Achieved Speedup} \label{sec:speedup}
+Proof of the actual run is shown in Figure~\ref{fig: proof}. Also, I posted the logs (run the programs 15 times) for the original version in section~\ref{sec: original logs} and the SIMD version in section~\ref{sec: SIMD logs}.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\linewidth]{code_run.png}
+    \label{fig: proof}
+\end{figure}
+The programs were executed 15 times, and the average values are shown below:
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Version} & \textbf{Average Time (seconds)} \\ \hline
+        Original         & 23.10                           \\ \hline
+        AVX-Optimized    & 4.47                            \\ \hline
+    \end{tabular}
+    % \caption{Comparison of average computation times between the original and AVX-optimized versions.}
+\end{table}
+% \section{Performance Analysis}
+% Calculating the ratio of the original execution time to the AVX-optimized execution time shows the speed up. 
+\[
+    \text{Speed-up} = \frac{\text{Time for Original Version}}{\text{Time for AVX Version}} = \frac{23.10}{4.47} \approx 5.16
+\]
+
+Getting a speedup of 5.1 is good, but it is expected to get a speed close to 8(without taking into consideration the additional latency of AVX instructions and data movement)  since we're handling eight data points at one time.
+SIMD instructions have a longer latency than regular x86 instructions and require additional instructions to move memory from regular x86 registers to AVX registers, so a 5.1x speed-up is expected.
+
+% This shows that SIMD can achieve significant speed up in \zonenorm{} algorithm. 
+
+
+\clearpage
+\section{Logs for Original File Execution} \label{sec: original logs}
+\input{og_logs}
+
+\clearpage
+\section{Logs for SIMD File Execution} \label{sec: SIMD logs}
+\input{simd_logs}
+
+\end{document}

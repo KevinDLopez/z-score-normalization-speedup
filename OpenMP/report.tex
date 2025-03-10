@@ -20,24 +20,24 @@
 \section{Report deliverables}
 \begin{itemize}
     \item The file is named \texttt{report.pdf}.
-    \item An explanation of why I think this application is a good choice for OpenMP (Include the link to the exact location where the original program is referenced from) in Sections~\ref{sec:links}. 
+    \item An explanation of why I think this application is a good choice for OpenMP (Include the link to the exact location where the original program is referenced from) in Sections~\ref{sec:links}.
     \item An explanation of the code, the program's functionality, flow, and OpenMP acceleration in Section~\ref{sec:code}.
-    % \item Compilation steps and flags in \hyperref[sec:compilation]{Section \ref*{sec:compilation}}.
-    \item Explained the estimated speed up in Section~\ref{sec: expected speed up}. 
+          % \item Compilation steps and flags in \hyperref[sec:compilation]{Section \ref*{sec:compilation}}.
+    \item Explained the estimated speed up in Section~\ref{sec: expected speed up}.
     \item Proof of achieved speedup with expectations in Section~\ref{sec:speedup}.
 \end{itemize}
 
 
 \section{Explanation why data normalization is a good choice of program for OpenMP} \label{sec:links}
-OpenMP can achieve a high speed over independent for-loop interactions, and it's the idea of why it can achieve a high speedup on z-score normalization (or any normalization strategy, also \textit{batch normalization}). 
-In the case of z-score normalization, the total(sum) must be calculated, which can be parallelized. 
-Calculate the difference to the mean, which can also be parallelized, and update all the current data, which can also be normalized. 
-With that being said, it's possible to parallelize all the different operations in z-score normalization. 
+OpenMP can achieve a high speed over independent for-loop interactions, and it's the idea of why it can achieve a high speedup on z-score normalization (or any normalization strategy, also \textit{batch normalization}).
+In the case of z-score normalization, the total(sum) must be calculated, which can be parallelized.
+Calculate the difference to the mean, which can also be parallelized, and update all the current data, which can also be normalized.
+With that being said, it's possible to parallelize all the different operations in z-score normalization.
 
 \subsection{Links to Exact Locations} \label{sec: exact links}
-I referred to the following articles to understand the implementation and usage of Z-Score Normalization. 
+I referred to the following articles to understand the implementation and usage of Z-Score Normalization.
 
-\textbf{Explanation and example usage of data normalization}: 
+\textbf{Explanation and example usage of data normalization}:
 \begin{itemize}  \item \url{https://developers.google.com/machine-learning/crash-course/numerical-data/normalization#z-score_scaling} \end{itemize}
 % https://developers.google.com/machine-learning/crash-course/numerical-data/normalization#z-score_scaling
 \textbf{The code implementation of the Z-score normalization (Scikit-learn repository):}
@@ -48,24 +48,24 @@ I referred to the following articles to understand the implementation and usage 
 \section{Code Explanation} \label{sec:code}
 
 
-Here, I will explain the original code implementation in Section~\ref{sec: original} and the OpenMP code implementation in Section~\ref{sec: OpenMP}. 
+Here, I will explain the original code implementation in Section~\ref{sec: original} and the OpenMP code implementation in Section~\ref{sec: OpenMP}.
 
 \subsection{Original Algorithm}\label{sec: original}
 The original algorithm (not optimized) uses the basic functions of mean and standard deviation to update each value individually and one by one.
 % 
-Since this needs to be run a single thread or process at a time, it takes $n$ times to finish executing the algorithm, where n is the number of data points. 
+Since this needs to be run a single thread or process at a time, it takes $n$ times to finish executing the algorithm, where n is the number of data points.
 % 
 % To \textit{Z-score normalize} data, I make every row a different feature.  
 % This means that every row would have to be normalized by itself (Need to calculate the mean and standard deviation for every row). 
-I have made functions to find the mean and standard deviation.  
-And used in the main normalization function. 
+I have made functions to find the mean and standard deviation.
+And used in the main normalization function.
 Each function is defined as follows:
 
 \begin{itemize}
     \item The following formula is used to calculate the \zonenorm{}: $Z = \frac{\vec{X} - \mu}{\sigma}$. where: $\vec{X}$ is the original input,  $\mu$ is the mean of $\vec{X}$, $\sigma$ is the standard deviation of $\vec{X}$.
-    % \item % Mean
+          % \item % Mean
     \item The mean is calculated by  $\mu = \frac{\sum_{i=1}^{n} x_i}{n}$; where: $x_i$ is the $i$th data point, and $n$ is the total points.
-    % \item % Standard Deviation
+          % \item % Standard Deviation
     \item The standard deviation is calculated by: $\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \mu)^2}{n}}$.
 \end{itemize}
 
@@ -79,13 +79,13 @@ Each function is defined as follows:
 \subsection{OpenMP} \label{sec: OpenMP}
 % The Single Instruction Multiple Data algorithm handles multiple inputs at a time (Multiple Data). 
 % In my case, since I'm using floating point values and 256 OpenMP registers, it handles 8 values at a time. 
-It is possible to use OpenMP to handle multiple data points simultaneously. 
+It is possible to use OpenMP to handle multiple data points simultaneously.
 In the case of parallelizing z-score-normalization, it is possible to parallelize a lot of the work done on the data.
-Below are the different loops that can be parallelized and provide a high speed-up. 
+Below are the different loops that can be parallelized and provide a high speed-up.
 \begin{itemize}
-    \item Calculating the sum (needed for the mean ). 
+    \item Calculating the sum (needed for the mean ).
     \item Calculating the sum of squared deviations (needed for the standard deviation)
-    \item Z-score Normalizing the actual data. 
+    \item Z-score Normalizing the actual data.
 \end{itemize}
 
 
@@ -97,15 +97,15 @@ where:
 $\vec{X}$ is the original input;
 $\mu$ is the mean of $\vec{X}$;
 $\sigma$ is the standard deviation of $\vec{X}$;
-In my case of normalizing data with \zonenorm{}, I need to calculate the mean (Section~\ref{sec: mean})and Standard Deviation (Section~\ref{sec: std_dev} ), which is parallelized using OpenMP. 
+In my case of normalizing data with \zonenorm{}, I need to calculate the mean (Section~\ref{sec: mean})and Standard Deviation (Section~\ref{sec: std_dev} ), which is parallelized using OpenMP.
 
 % For \zonenorm{}, I make every row a different feature.  
 % This means that every row would have to be normalized by itself (Need to calculate the mean and standard deviation for every row). 
 % The explanation of mean is in Section~\ref{sec: mean}, and for standard deviation is in Section~\ref{sec: std_dev}. 
-Once I have the mean and standard deviation, we must update every value based on the formula. 
-To speed up the process of updating every value, it is also possible to use OpenMP, handling n data points at a time. Where n is the number of cores allowed to run parallel done by the function\verb|omp_set_num_threads(n)|. It is possible to get the best speed up when using the maximum number of cores in the PC by using the function \verb|omp_get_max_threads()| 
+Once I have the mean and standard deviation, we must update every value based on the formula.
+To speed up the process of updating every value, it is also possible to use OpenMP, handling n data points at a time. Where n is the number of cores allowed to run parallel done by the function\verb|omp_set_num_threads(n)|. It is possible to get the best speed up when using the maximum number of cores in the PC by using the function \verb|omp_get_max_threads()|
 
-To actually normalize the data, it is possible to use the basic formula from the original function. Since this function does not have any dependencies, it is possible to optimize it using OpenMP basic for loop \verb|#pragma omp parallel for|. Using this OpenMP macro allows the compiler to distribute the work between the different processors configured and achieve higher speed up compared to the single-threaded program. 
+To actually normalize the data, it is possible to use the basic formula from the original function. Since this function does not have any dependencies, it is possible to optimize it using OpenMP basic for loop \verb|#pragma omp parallel for|. Using this OpenMP macro allows the compiler to distribute the work between the different processors configured and achieve higher speed up compared to the single-threaded program.
 
 % I handle these values at the end using the basic C++ syntax ($(matrix[row][col] - mean) / stnddev;$). 
 
@@ -115,20 +115,20 @@ To actually normalize the data, it is possible to use the basic formula from the
 
 \subsubsection{Mean} \label{sec: mean}
 The mean is calculated by  $\mu = \frac{\sum_{i=1}^{n} x_i}{n}$;
-where: $x_i$ is the $i$th data point, and $n$ is the total number of data points. 
+where: $x_i$ is the $i$th data point, and $n$ is the total number of data points.
 
 
-To speed up the mean calculation, it is possible to calculate the sum in parallel; the only issue is that the sum variable is a value shared across all the running processes. 
-OpenMP does allow to speed this up even with the dependency by using the \textbf{reduction} keyword along with the variable shared. 
-The complete macro to speed up the sum calculation is  \verb|#pragma omp parallel for reduction(+:sum)| where the sum is the shared variable(each process would have its own copy of it where they accumulate the sum). In the end, OpenMP reduces all the sum variables copied into the processes into one global variable.  
+To speed up the mean calculation, it is possible to calculate the sum in parallel; the only issue is that the sum variable is a value shared across all the running processes.
+OpenMP does allow to speed this up even with the dependency by using the \textbf{reduction} keyword along with the variable shared.
+The complete macro to speed up the sum calculation is  \verb|#pragma omp parallel for reduction(+:sum)| where the sum is the shared variable(each process would have its own copy of it where they accumulate the sum). In the end, OpenMP reduces all the sum variables copied into the processes into one global variable.
 
 
 \subsubsection{Standard Deviation} \label{sec: std_dev}
-The standard deviation is calculated by: $\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \mu)^2}{n}}$; where: $x_i$ is the $i$th data point, $\mu$ is the mean, $n$ is the total points. 
+The standard deviation is calculated by: $\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \mu)^2}{n}}$; where: $x_i$ is the $i$th data point, $\mu$ is the mean, $n$ is the total points.
 
 % First, to calculate the standard deviation, the mean is needed, and this is passed as a parameter from the previous section~\ref{sec: mean}. 
-With the mean of the whole data, it is possible to get the deviation of every data point and sum to the variable \textit{sum}. 
-Again, since it is necessary to write to the same variable name, this would cause race conditions; in this case, we again use the same method \textbf{reduction} from opemMP to handle it. The full line to optimize all the operations is \verb|#pragma omp parallel for reduction(+:sum)| where \textit{sum} variable is the sum of squared deviations. In the end, to get the variance, we just divide it by the number of elements. 
+With the mean of the whole data, it is possible to get the deviation of every data point and sum to the variable \textit{sum}.
+Again, since it is necessary to write to the same variable name, this would cause race conditions; in this case, we again use the same method \textbf{reduction} from opemMP to handle it. The full line to optimize all the operations is \verb|#pragma omp parallel for reduction(+:sum)| where \textit{sum} variable is the sum of squared deviations. In the end, to get the variance, we just divide it by the number of elements.
 
 
 
@@ -150,27 +150,27 @@ Again, since it is necessary to write to the same variable name, this would caus
 I used the following commands to compile the code
 \begin{itemize}
     \item \textbf{Original version:}
-    \begin{itemize}
-        \item \begin{verbatim} $ g++ ./z_score_norm_original.cpp -o original.exe  \end{verbatim}
-    \end{itemize}
+          \begin{itemize}
+              \item \begin{verbatim} $ g++ ./z_score_norm_original.cpp -o original.exe  \end{verbatim}
+          \end{itemize}
     \item \textbf{OpenMP version:}
-    \begin{itemize}
-        \item \begin{verbatim} $ g++ -fopenmp ./z_score_norm_OpenMP.cpp -o OpenMP.exe \end{verbatim}
-    \end{itemize}
+          \begin{itemize}
+              \item \begin{verbatim} $ g++ -fopenmp ./z_score_norm_OpenMP.cpp -o OpenMP.exe \end{verbatim}
+          \end{itemize}
 
 \end{itemize}
-Where the flags mean the following: 
+Where the flags mean the following:
 \begin{itemize}
     \item \texttt{g++}: Compiler used to compile the C++ code.
     \item \texttt{-fopenmp}: This flag enables OpenMP.
-    \item \texttt{./z\_score\_norm\_original.cpp ./z\_score\_norm\_OpenMP.cpp}: The source file. 
+    \item \texttt{./z\_score\_norm\_original.cpp ./z\_score\_norm\_OpenMP.cpp}: The source file.
     \item \texttt{-o original.exe}: The \texttt{-o}: name of the output executable file.
-    \item \texttt{\&\& ./original.exe}: Execute the program after compiling.
+          % \item \texttt{\&\& ./original.exe}: Execute the program after compiling.
 \end{itemize}
 
 to run the code and get meaningful results the code was run 20 times in a row, for this I used the bash script below.
 \begin{scriptsize}
-\begin{minted}[linenos, frame=lines, breaklines]{bash}
+    \begin{minted}[linenos, frame=lines, breaklines]{bash}
 $ echo -e "-----\n\n\n\n\n ################### ORIGINAL ###################"
 g++ ./z_score_norm_original.cpp -o original.exe
 for i in {1..20}
@@ -179,7 +179,7 @@ do
   ./original.exe
 
 echo -e "-----\n\n\n\n\n ################### OpenMP ###################"
-g++ -fopenmp ./z_score_norm_OpenMP.cpp -o OpenMP.exe
+g++ -fopenmp ./z_score_norm_OpenMP.cpp -o OpenMP.exe 
 for i in {1..20}
 do
   echo -e "-----\n\n\n\nRun #$i"
@@ -195,60 +195,60 @@ done
 
 
 \section{Estimated Speedup } \label{sec: expected speed up}
-Looking down from the big picture, we might assume that this should get a speed up of $n$ where n is the number of processors, but there is one thing that we still need to take into account, and there are still some portions of the code that need to be handled sequentially.  
-In the \textbf{reduce} method of OpenMP, the multiple processors need to create private locations of the sum variable that allow it to accumulate the sum value across different processors, and it would need to reduce it back to one single sum. This would take some time with the addition of the rest of the code that needs to run in a single core. For example, entering functions, making the last set of operations(divisions), and other operations. 
+Looking down from the big picture, we might assume that this should get a speed up of $n$ where n is the number of processors, but there is one thing that we still need to take into account, and there are still some portions of the code that need to be handled sequentially.
+In the \textbf{reduce} method of OpenMP, the multiple processors need to create private locations of the sum variable that allow it to accumulate the sum value across different processors, and it would need to reduce it back to one single sum. This would take some time with the addition of the rest of the code that needs to run in a single core. For example, entering functions, making the last set of operations(divisions), and other operations.
 
 
 % (10pt) Proof of Achieved Speedup (and if it matches with your expectations)
 \section{Proof of Achieved Speedup} \label{sec:speedup}
-To prove the speed-up achieved, I have attached the logs and Figures~\ref{fig: prof of speed up},\ref{fig: prof of speed up 2}. I posted the logs (run the programs 20 times) for the original version in section~\ref{sec: original logs} and the oepnMP version in section~\ref{sec: OpenMP logs}. 
+To prove the speed-up achieved, I have attached the logs and Figures~\ref{fig: prof of speed up},\ref{fig: prof of speed up 2}. I posted the logs (run the programs 20 times) for the original version in section~\ref{sec: original logs} and the oepnMP version in section~\ref{sec: OpenMP logs}.
 
 The programs were executed 20 times, the numbers are shown in table~\ref{tab:comparison}:
 
 \begin{table}[h]
- \caption{OpenMP and Original Comparison}
- \label{tab:comparison}
- \centering
- \begin{tabular}{lrr}
- \toprule
- Run\_number & original\_time & OpenMP\_time \\
- \midrule
- run \#1 & 52.54 & 6.04 \\
- run \#2 & 39.52 & 5.84 \\
- run \#3 & 36.36 & 6.01 \\
- run \#4 & 36.04 & 6.46 \\
- run \#5 & 33.96 & 6.37 \\
- run \#6 & 52.62 & 5.22 \\
- run \#7 & 52.31 & 6.12 \\
- run \#8 & 31.13 & 6.70 \\
- run \#9 & 31.12 & 5.68 \\
- run \#10 & 30.87 & 5.74 \\
- run \#11 & 36.23 & 5.19 \\
- run \#12 & 60.24 & 4.43 \\
- run \#13 & 36.28 & 5.55 \\
- run \#14 & 37.14 & 6.05 \\
- run \#15 & 33.95 & 8.20 \\
- run \#16 & 36.74 & 8.13 \\
- run \#17 & 60.59 & 8.15 \\
- run \#18 & 63.19 & 7.24 \\
- run \#19 & 36.95 & 8.33 \\
- run \#20 & 38.10 & 8.09 \\
- \textbf{average} & \textbf{41.79} & \textbf{6.48} \\
- standard\_deviation & 10.71 & 1.16 \\
- speed\_up & 1.00 & \textbf{6.45} \\
- \bottomrule
- \end{tabular}
+    \caption{OpenMP and Original Comparison}
+    \label{tab:comparison}
+    \centering
+    \begin{tabular}{lrr}
+        \toprule
+        Run\_number         & original\_time & OpenMP\_time  \\
+        \midrule
+        run \#1             & 52.54          & 6.04          \\
+        run \#2             & 39.52          & 5.84          \\
+        run \#3             & 36.36          & 6.01          \\
+        run \#4             & 36.04          & 6.46          \\
+        run \#5             & 33.96          & 6.37          \\
+        run \#6             & 52.62          & 5.22          \\
+        run \#7             & 52.31          & 6.12          \\
+        run \#8             & 31.13          & 6.70          \\
+        run \#9             & 31.12          & 5.68          \\
+        run \#10            & 30.87          & 5.74          \\
+        run \#11            & 36.23          & 5.19          \\
+        run \#12            & 60.24          & 4.43          \\
+        run \#13            & 36.28          & 5.55          \\
+        run \#14            & 37.14          & 6.05          \\
+        run \#15            & 33.95          & 8.20          \\
+        run \#16            & 36.74          & 8.13          \\
+        run \#17            & 60.59          & 8.15          \\
+        run \#18            & 63.19          & 7.24          \\
+        run \#19            & 36.95          & 8.33          \\
+        run \#20            & 38.10          & 8.09          \\
+        \textbf{average}    & \textbf{41.79} & \textbf{6.48} \\
+        standard\_deviation & 10.71          & 1.16          \\
+        speed\_up           & 1.00           & \textbf{6.45} \\
+        \bottomrule
+    \end{tabular}
 \end{table}
 
 % \section{Performance Analysis}
 % Calculating the ratio of the original execution time to the AVX-optimized execution time shows the speed up. 
 \[
-\text{Speed-up} = \frac{\text{Time for Original Version}}{\text{Time for OpenMP Version}} = \frac{41.79}{6.48} \approx 6.45
+    \text{Speed-up} = \frac{\text{Time for Original Version}}{\text{Time for OpenMP Version}} = \frac{41.79}{6.48} \approx 6.45
 \]
 
 % This shows that OpenMP can achieve significant speed up in \zonenorm{} algorithm. 
-One can assume that the speed-up would be close to the number of parallel processes running. When looking in, we can see that there is more to why it won't run at the expected theoretical max. There are portions of the code that need to run in a single process, and also, the OpenMP instructions can add some overhead(The reduce method would need to make copies of the sum variable in each process and then reduce it back to one). 
-Therefore, getting a speedup of $\approx 6.45 $ is a valid number for this application.  
+One can assume that the speed-up would be close to the number of parallel processes running. When looking in, we can see that there is more to why it won't run at the expected theoretical max. There are portions of the code that need to run in a single process, and also, the OpenMP instructions can add some overhead(The reduce method would need to make copies of the sum variable in each process and then reduce it back to one).
+Therefore, getting a speedup of $\approx 6.45 $ is a valid number for this application.
 
 
 
@@ -257,14 +257,14 @@ Therefore, getting a speedup of $\approx 6.45 $ is a valid number for this appli
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=\textheight,keepaspectratio]{image2.png}
+        % \includegraphics[height=\textheight,keepaspectratio]{image2.png}
         \caption{Proof of speed up(Original)}
         \label{fig: prof of speed up}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=\textheight,keepaspectratio]{image.png}
+        % \includegraphics[height=\textheight,keepaspectratio]{image.png}
         \caption{Proof of speed up (OpenMP) }
         \label{fig: prof of speed up 2}
     \end{minipage}
@@ -272,12 +272,12 @@ Therefore, getting a speedup of $\approx 6.45 $ is a valid number for this appli
 
 \clearpage
 \begin{scriptsize}
-\subsection{Logs for Original File Execution} \label{sec: original logs}
-\input{og_logs}
+    \subsection{Logs for Original File Execution} \label{sec: original logs}
+    % \input{og_logs}
 
-\clearpage
-\subsection{Logs for OpenMP File Execution} \label{sec: OpenMP logs}
-\input{OpenMP_logs}
+    \clearpage
+    \subsection{Logs for OpenMP File Execution} \label{sec: OpenMP logs}
+    % \input{OpenMP_logs}
 \end{scriptsize}
 
 \end{document}
