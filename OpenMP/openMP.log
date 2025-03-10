@@ -1,0 +1,559 @@
+
+ ################### OPENMP ###################
+Run #1
+Matrix before normalization
+7.00 8.00 5.00 0.00 10.00 7.00 6.00 0.00 8.00 5.00
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+0.63 0.95 0.00 -1.58 1.58 0.63 0.32 -1.58 0.95 0.00
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 6.04 seconds.
+-----
+
+
+
+Run #2
+Matrix before normalization
+6.00 0.00 0.00 6.00 7.00 1.00 10.00 0.00 9.00 1.00
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+0.32 -1.58 -1.58 0.32 0.63 -1.26 1.58 -1.58 1.27 -1.26
+Maximum number of threads available: 20
+Mean of the first row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 5.84 seconds.
+-----
+
+
+
+Run #3
+Matrix before normalization
+5.00 3.00 7.00 2.00 3.00 6.00 3.00 1.00 8.00 9.00
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+0.00 -0.63 0.63 -0.95 -0.63 0.32 -0.63 -1.26 0.95 1.26
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 6.01 seconds.
+-----
+
+
+
+Run #4
+Matrix before normalization
+10.00 10.00 4.00 1.00 5.00 0.00 6.00 10.00 10.00 7.00
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+1.58 1.58 -0.32 -1.26 0.00 -1.58 0.32 1.58 1.58 0.63
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 6.46 seconds.
+-----
+
+
+
+Run #5
+Matrix before normalization
+8.00 3.00 0.00 8.00 1.00 5.00 9.00 10.00 10.00 4.00
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+0.95 -0.63 -1.58 0.95 -1.26 0.00 1.26 1.58 1.58 -0.32
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 6.37 seconds.
+-----
+
+
+
+Run #6
+Matrix before normalization
+4.00 4.00 6.00 8.00 0.00 10.00 3.00 1.00 9.00 0.00
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+-0.32 -0.32 0.32 0.95 -1.58 1.58 -0.63 -1.26 1.27 -1.58
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 5.22 seconds.
+-----
+
+
+
+Run #7
+Matrix before normalization
+10.00 5.00 1.00 8.00 0.00 4.00 7.00 3.00 7.00 7.00      
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+1.58 0.00 -1.26 0.95 -1.58 -0.32 0.63 -0.63 0.63 0.63   
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 6.12 seconds.
+-----
+
+
+
+Run #8
+Matrix before normalization
+2.00 6.00 6.00 1.00 3.00 9.00 0.00 6.00 5.00 2.00       
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+-0.95 0.32 0.32 -1.26 -0.63 1.26 -1.58 0.32 -0.00 -0.95 
+Maximum number of threads available: 20
+Mean of the first row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 6.70 seconds.
+-----
+
+
+
+Run #9
+Matrix before normalization
+5.00 5.00 1.00 5.00 6.00 3.00 6.00 9.00 3.00 8.00       
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+0.00 0.00 -1.26 0.00 0.32 -0.63 0.32 1.27 -0.63 0.95    
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 5.68 seconds.
+-----
+
+
+
+Run #10
+Matrix before normalization
+3.00 8.00 2.00 6.00 2.00 10.00 1.00 8.00 5.00 0.00      
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+-0.63 0.95 -0.95 0.32 -0.95 1.58 -1.26 0.95 0.00 -1.58  
+Maximum number of threads available: 20
+Mean of the first row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 5.74 seconds.
+-----
+
+
+
+Run #11
+Matrix before normalization
+1.00 10.00 4.00 8.00 9.00 5.00 8.00 7.00 9.00 3.00      
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+-1.26 1.58 -0.32 0.95 1.26 0.00 0.95 0.63 1.26 -0.63    
+Maximum number of threads available: 20
+Mean of the first row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 5.19 seconds.
+-----
+
+
+
+Run #12
+Matrix before normalization
+2.00 3.00 6.00 5.00 3.00 10.00 4.00 5.00 2.00 6.00      
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+-0.95 -0.63 0.32 0.00 -0.63 1.58 -0.32 0.00 -0.95 0.32  
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 4.43 seconds.
+-----
+
+
+
+Run #13
+Matrix before normalization
+7.00 4.00 7.00 0.00 2.00 6.00 1.00 5.00 3.00 8.00       
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+0.63 -0.32 0.63 -1.58 -0.95 0.32 -1.26 0.00 -0.63 0.95  
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 5.55 seconds.
+-----
+
+
+
+Run #14
+Matrix before normalization
+4.00 10.00 0.00 1.00 1.00 0.00 6.00 0.00 10.00 2.00     
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+-0.32 1.58 -1.58 -1.26 -1.26 -1.58 0.32 -1.58 1.58 -0.95
+
+Maximum number of threads available: 20
+Mean of the first row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 6.05 seconds.
+-----
+
+
+
+Run #15
+Matrix before normalization
+2.00 4.00 6.00 7.00 8.00 5.00 10.00 0.00 10.00 9.00     
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+-0.95 -0.32 0.32 0.63 0.95 0.00 1.58 -1.58 1.58 1.26    
+Maximum number of threads available: 20
+Mean of the first row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 8.20 seconds.
+-----
+
+
+
+Run #16
+Matrix before normalization
+5.00 9.00 8.00 5.00 1.00 9.00 10.00 1.00 8.00 1.00      
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+0.00 1.27 0.95 0.00 -1.26 1.27 1.58 -1.26 0.95 -1.26    
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 8.13 seconds.
+-----
+
+
+
+Run #17
+Matrix before normalization
+9.00 10.00 7.00 3.00 4.00 2.00 1.00 5.00 1.00 2.00      
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+1.26 1.58 0.63 -0.63 -0.32 -0.95 -1.26 0.00 -1.26 -0.95 
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 8.15 seconds.
+-----
+
+
+
+Run #18
+Matrix before normalization
+1.00 6.00 9.00 0.00 10.00 6.00 1.00 6.00 0.00 5.00      
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+-1.26 0.32 1.26 -1.58 1.58 0.32 -1.26 0.32 -1.58 0.00   
+Maximum number of threads available: 20
+Mean of the first row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 7.24 seconds.
+-----
+
+
+
+Run #19
+Matrix before normalization
+0.00 10.00 10.00 1.00 6.00 9.00 2.00 7.00 6.00 6.00     
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+-1.58 1.58 1.58 -1.26 0.32 1.26 -0.95 0.63 0.32 0.32    
+Maximum number of threads available: 20
+Mean of the first row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: -0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 8.33 seconds.
+-----
+
+
+
+Run #20
+Matrix before normalization
+5.00 0.00 8.00 10.00 8.00 3.00 3.00 1.00 1.00 7.00      
+Maximum number of threads available: 20
+Mean of the first row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 3.16
+Maximum number of threads available: 20
+Mean of the last row: 5.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 3.16
+Maximum number of threads available: 20
+
+Matrix after normalization
+0.00 -1.58 0.95 1.58 0.95 -0.63 -0.63 -1.26 -1.26 0.63  
+Maximum number of threads available: 20
+Mean of the first row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the first row: 1.00
+Maximum number of threads available: 20
+Mean of the last row: 0.00
+Maximum number of threads available: 20
+Standard Deviation of the last row: 1.00
+Time taken for OpenMP code: 8.09 seconds.

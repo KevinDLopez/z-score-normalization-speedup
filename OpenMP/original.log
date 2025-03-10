@@ -1,0 +1,396 @@
+kevin@Kevin-X16 MINGW64 /c/Repositories/School/Semester4/CECS_574/HW2/lopez_kevin_013378831 (main)
+$ echo -e "-----\n\n\n\n\n ################### ORIGINAL ###################"
+g++ -fopenmp ./z_score_norm_original.cpp -o original.exe
+for i in {1..20}
+do
+  echo -e "-----\n\n\n\nRun #$i"
+  ./original.exe
+MP ###################"
+g++ -fopenmp ./z_score_norm_openMP.cpp -o openMP.exe && ./openMP.exe
+for i in {1..20}
+do
+  echo -e "-----\n\n\n\nRun #$i"
+  ./openMP.exe
+done
+-----
+
+
+
+
+ ################### ORIGINAL ###################
+-----
+
+
+
+Run #1
+Matrix before normalization
+4.00 5.00 2.00 7.00 3.00 9.00 4.00 4.00 8.00 1.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-0.32 0.00 -0.95 0.63 -0.63 1.26 -0.32 -0.32 0.95 -1.26
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 52.54 seconds.
+-----
+
+
+
+Run #2
+Matrix before normalization
+3.00 7.00 1.00 4.00 5.00 7.00 10.00 0.00 5.00 7.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16        
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-0.63 0.63 -1.26 -0.32 0.00 0.63 1.58 -1.58 0.00 0.63
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00        
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 39.52 seconds.   
+-----
+
+
+
+Run #3
+Matrix before normalization
+2.00 3.00 8.00 3.00 4.00 1.00 10.00 9.00 0.00 8.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16        
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-0.95 -0.63 0.95 -0.63 -0.32 -1.26 1.58 1.27 -1.58 0.95
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00        
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 36.36 seconds.   
+-----
+
+
+
+Run #4
+Matrix before normalization
+0.00 6.00 7.00 1.00 4.00 3.00 7.00 2.00 7.00 2.00
+
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-1.58 0.32 0.63 -1.26 -0.32 -0.63 0.63 -0.95 0.63 -0.95
+Mean of the first row: -0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: -0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 36.04 seconds.   
+-----
+
+
+
+Run #5
+Matrix before normalization
+4.00 6.00 1.00 10.00 7.00 8.00 10.00 8.00 6.00 0.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-0.32 0.32 -1.26 1.58 0.63 0.95 1.58 0.95 0.32 -1.58
+Mean of the first row: -0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: -0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 33.96 seconds.   
+-----
+
+
+
+Run #6
+Matrix before normalization
+6.00 8.00 8.00 6.00 0.00 4.00 6.00 6.00 3.00 2.00
+
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+0.32 0.95 0.95 0.32 -1.58 -0.32 0.32 0.32 -0.63 -0.95
+Mean of the first row: -0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: -0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 52.62 seconds.   
+-----
+
+
+
+Run #7
+Matrix before normalization
+8.00 8.00 7.00 2.00 5.00 8.00 8.00 2.00 2.00 8.00
+
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+0.95 0.95 0.63 -0.95 0.00 0.95 0.95 -0.95 -0.95 0.95
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 52.31 seconds.   
+-----
+
+
+
+Run #8
+Matrix before normalization
+8.00 8.00 5.00 1.00 3.00 1.00 5.00 4.00 4.00 3.00
+
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+0.95 0.95 0.00 -1.26 -0.63 -1.26 0.00 -0.32 -0.32 -0.63
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 31.13 seconds.   
+-----
+
+
+
+Run #9
+Matrix before normalization
+9.00 2.00 4.00 7.00 0.00 3.00 3.00 8.00 1.00 7.00
+
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+1.27 -0.95 -0.32 0.63 -1.58 -0.63 -0.63 0.95 -1.26 0.63
+Mean of the first row: -0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: -0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 31.12 seconds.   
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+1.26 -0.95 -1.26 -0.32 -0.32 -1.58 0.00 -0.95 0.32 1.26
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 30.87 seconds.
+-----
+
+
+
+Run #11
+Matrix before normalization
+9.00 2.00 10.00 0.00 7.00 9.00 7.00 9.00 0.00 0.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+1.26 -0.95 1.58 -1.58 0.63 1.26 0.63 1.26 -1.58 -1.58
+Mean of the first row: -0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: -0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 36.23 seconds.
+-----
+
+
+
+Run #12
+Matrix before normalization
+0.00 6.00 1.00 3.00 1.00 2.00 0.00 8.00 5.00 7.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-1.58 0.32 -1.26 -0.63 -1.26 -0.95 -1.58 0.95 0.00 0.63
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 60.24 seconds.
+-----
+
+
+
+Run #13
+Matrix before normalization
+10.00 4.00 10.00 2.00 10.00 7.00 3.00 6.00 3.00 2.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+1.58 -0.32 1.58 -0.95 1.58 0.63 -0.63 0.32 -0.63 -0.95
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 36.28 seconds.
+-----
+
+
+
+Run #14
+Matrix before normalization
+7.00 4.00 2.00 9.00 5.00 5.00 6.00 5.00 7.00 1.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+0.63 -0.32 -0.95 1.27 0.00 0.00 0.32 0.00 0.63 -1.26
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 37.14 seconds.
+-----
+
+
+
+Run #15
+Matrix before normalization
+0.00 9.00 8.00 4.00 8.00 10.00 6.00 6.00 8.00 2.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-1.58 1.26 0.95 -0.32 0.95 1.58 0.32 0.32 0.95 -0.95
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 33.95 seconds.
+-----
+
+
+
+Run #16
+Matrix before normalization
+3.00 7.00 8.00 8.00 1.00 3.00 1.00 9.00 1.00 6.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-0.63 0.63 0.95 0.95 -1.26 -0.63 -1.26 1.26 -1.26 0.32
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 36.74 seconds.
+-----
+
+
+
+Run #17
+Matrix before normalization
+1.00 4.00 0.00 2.00 10.00 9.00 4.00 6.00 7.00 3.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-1.26 -0.32 -1.58 -0.95 1.58 1.27 -0.32 0.32 0.63 -0.63
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 60.59 seconds.
+-----
+
+
+
+Run #18
+Matrix before normalization
+0.00 0.00 3.00 9.00 2.00 8.00 1.00 8.00 2.00 3.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-1.58 -1.58 -0.63 1.26 -0.95 0.95 -1.26 0.95 -0.95 -0.63
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 63.19 seconds.
+-----
+
+
+
+Run #19
+Matrix before normalization
+7.00 2.00 6.00 7.00 10.00 5.00 2.00 1.00 2.00 5.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+0.63 -0.95 0.32 0.63 1.58 0.00 -0.95 -1.26 -0.95 0.00
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 36.95 seconds.
+-----
+
+
+
+Run #20
+Matrix before normalization
+2.00 9.00 2.00 0.00 1.00 9.00 2.00 0.00 6.00 6.00
+Mean of the first row: 5.00
+Standard Deviation of the first row: 3.16
+Mean of the last row: 5.00
+Standard Deviation of the last row: 3.16
+
+Matrix after normalization
+-0.95 1.26 -0.95 -1.58 -1.26 1.26 -0.95 -1.58 0.32 0.32
+Mean of the first row: 0.00
+Standard Deviation of the first row: 1.00
+Mean of the last row: 0.00
+Standard Deviation of the last row: 1.00
+Time taken for NON-OpenMP code: 38.10 seconds.
+-----
