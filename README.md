@@ -72,12 +72,14 @@ For detailed performance analysis, refer to `SIMD/report.pdf`.
 Both optimization approaches show significant speedups compared to the original implementation:
 
 ### OpenMP Results
-- The OpenMP implementation achieves up to X times speedup on multi-core systems.
+- The OpenMP implementation achieves up to 6.45x speedup on multi-core systems.
 - Scaling improves with larger dataset sizes.
+- Performance analysis showed the original implementation averaged 41.79 seconds versus 6.48 seconds with OpenMP.
 
 ### SIMD Results
-- The SIMD implementation achieves up to Y times speedup.
+- The SIMD implementation achieves up to 5.16x speedup.
 - Most efficient with aligned data and when processing large contiguous arrays.
+- Performance analysis showed the original implementation averaged 23.10 seconds versus 4.47 seconds with the SIMD version.
 
 Detailed performance comparisons and analysis are available in the respective Jupyter notebooks and reports.
 
@@ -85,18 +87,66 @@ Detailed performance comparisons and analysis are available in the respective Ju
 
 ### Prerequisites
 - C++ compiler with OpenMP support (GCC or Clang)
-- CPU with SIMD instruction support (SSE/AVX)
+- CPU with SIMD x86 instruction support (SSE/AVX)
 - Python with Jupyter (for running analysis notebooks)
 
-### Compiling OpenMP Version
+
+## Benchmark Scripts
+
+The performance measurements were obtained by running each implementation multiple times and calculating the average execution time. Below are the scripts used to perform these benchmarks:
+
+### OpenMP Benchmark Script
+
 ```bash
-g++ -fopenmp -O3 -o z_score_openmp OpenMP/src/z_score_norm_openMP.cpp
+#!/bin/bash
+# Script to benchmark OpenMP implementation vs original
+
+echo -e "-----\n\n\n\n\n ################### ORIGINAL ###################"
+g++ ./OpenMP/src/z_score_norm_original.cpp -o original.exe
+for i in {1..20}
+do
+  echo -e "-----\n\n\n\nRun #$i"
+  ./original.exe
+done
+
+echo -e "-----\n\n\n\n\n ################### OpenMP ###################"
+g++ -fopenmp ./OpenMP/src/z_score_norm_openMP.cpp -o OpenMP.exe 
+for i in {1..20}
+do
+  echo -e "-----\n\n\n\nRun #$i"
+  ./OpenMP.exe
+done
 ```
 
-### Compiling SIMD Version
+### SIMD Benchmark Script
+
 ```bash
-g++ -mavx2 -O3 -o z_score_simd SIMD/src/z_score_norm__Optimized__.cpp
+#!/bin/bash
+# Script to benchmark SIMD implementation vs original
+
+echo -e "-----\n\n\n\n\n ################### ORIGINAL ###################"
+g++ ./SIMD/src/z_score_norm__Original__.cpp -o z_norm_og.exe
+for i in {1..15}
+do
+  echo -e "-----\n\n\n\nRun #$i"
+  ./z_norm_og.exe
+done
+
+echo -e "-----\n\n\n\n\n ################### SIMD ###################"
+g++ -mavx2 ./SIMD/src/z_score_norm__Optimized__.cpp -o z_opt.exe
+for i in {1..15}
+do
+  echo -e "-----\n\n\n\nRun #$i"
+  ./z_opt.exe
+done
 ```
+
+To run these scripts:
+1. Save the script to a file (e.g., `benchmark_openmp.sh` or `benchmark_simd.sh`)
+2. Make it executable: `chmod +x benchmark_openmp.sh`
+3. Run it: `./benchmark_openmp.sh > openmp.log`
+
+The execution time output will be saved to the log file for further analysis.
 
 ## Conclusion
 
